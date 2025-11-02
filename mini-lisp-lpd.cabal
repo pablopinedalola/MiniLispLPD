@@ -1,0 +1,39 @@
+cabal-version:      1.24
+name:               mini-lisp-lpd
+version:            0.1.0.0
+build-type:         Simple
+
+library
+  hs-source-dirs:   src
+  exposed-modules:  Surface.AST
+                  , Surface.Lexer
+                  , Surface.Parser
+                  , Desugar
+                  , Core.AST
+                  , Core.Eval.SOS
+                  , Core.Eval.Natural
+  build-depends:    base >=4.14 && <5
+                  , containers
+                  , mtl
+                  , array
+  build-tools:      alex
+  default-language: Haskell2010
+  ghc-options:      -Wall
+
+executable mini-lisp
+  hs-source-dirs:   app
+  main-is:          Main.hs
+  build-depends:    base >=4.14 && <5
+                  , mini-lisp-lpd
+                  , containers
+  default-language: Haskell2010
+  ghc-options:      -Wall
+
+test-suite spec
+  type:             exitcode-stdio-1.0
+  hs-source-dirs:   test
+  main-is:          Spec.hs
+  build-depends:    base >=4.14 && <5
+                  , mini-lisp-lpd
+  default-language: Haskell2010
+  ghc-options:      -Wall

@@ -1,0 +1,13 @@
+.stack-work/
+dist/
+dist-newstyle/
+.stack-root/
+**/*.hs.bak
+*.swp
+*.swo
+*.log
+.idea/
+.vscode/
+*.code-workspace
+.DS_Store
+Thumbs.db
