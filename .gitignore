@@ -1,13 +1,20 @@
+# Stack / Cabal
 .stack-work/
 dist/
 dist-newstyle/
 .stack-root/
+
+# Alex/Happy artefactos temporales
 **/*.hs.bak
+
+# Editores/IDE
 *.swp
 *.swo
 *.log
 .idea/
 .vscode/
 *.code-workspace
+
+# SO
 .DS_Store
 Thumbs.db
