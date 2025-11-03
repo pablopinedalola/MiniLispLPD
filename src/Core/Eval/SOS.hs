@@ -3,6 +3,7 @@ module Core.Eval.SOS (step, multiStep, trace) where
 import Core.AST
 import Core.Pretty (ppC)
 import Control.Applicative ((<|>))
+import Core.Pretty (ppBlock)
 
 
 -- Sustitución (solo para lambda y let; núcleo pequeño)
@@ -157,7 +158,4 @@ multiStep k e = case step e of
   Just e' -> e : multiStep (k-1) e'
 
 trace :: CExpr -> String
-trace e = unlines (map ppC (multiStep 100 e))
-  where
-    -- límite 100 pasos: evita loops en demos
-    _ = ()
+trace e = unlines (map ppBlock (multiStep 100 e))

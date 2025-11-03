@@ -6,6 +6,7 @@ import qualified Desugar           as D
 import qualified Core.Eval.Natural as N
 import qualified Core.Pretty       as PP
 import qualified Core.Eval.SOS     as SOS
+import qualified Core.Pretty       as PP
 import System.Environment (getArgs)
 import System.IO (hIsTerminalDevice, stdin)
 import Data.Char (isSpace)
@@ -23,7 +24,7 @@ runOne mode = do
       Left e   -> putStrLn ("Error: " ++ e)
       Right se -> case mode of
         "surf"  -> print se
-        "core"  -> print (D.desugar se)
+        "core"  -> putStrLn (PP.ppBlock (D.desugar se))
         "eval"  -> case N.runEval (D.desugar se) of
                      Left err -> putStrLn ("Error: " ++ err)
                      Right v  -> putStrLn (PP.ppV v)
